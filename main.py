@@ -36,12 +36,14 @@ def newpost():
     if request.method == 'POST':
         title = request.form['title']
         post = request.form['post']
+        error_1 = ""
+        error_2 = ""
         if not title:
-            error = "Please add a title"
-            return render_template('submit.html', error = error)
-        elif not post:
-            error = "Please add a post"
-            return render_template('submit.html', error = error)
+            error_1 = "Please add a title"
+        if not post:
+            error_2 = "Please add a post"
+        if not title or not post:
+            return render_template('submit.html', error_1 = error_1, error_2 = error_2)
         else:
             new_blog = Blog(title, post)
             db.session.add(new_blog)
