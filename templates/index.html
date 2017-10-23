@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% if blog|length == 0 %}
-    <p>No blogs yet</p>
+{% if user|length == 0 %}
+    <p>No users yet</p>
 {% else %}
 
-    {% for x in blog %}
-        <a href="./blog?id={{x.id}}"><h1>{{x.title}}</h1></a>
-        <article>{{x.body}}</article>
-
+    {% for x in user %}
+    <ul>
+        <a href="./blog?owner_id={{x.id}}"><li>{{x.username}}</li></a>
+    </ul>
     {% endfor %}
 
 {% endif %}

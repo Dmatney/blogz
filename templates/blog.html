@@ -1,6 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>{{blog.title}}</h1>
-    <article>{{blog.body}}</article>
+
+{% if not blog%}
+    <p>No blogs yet</p>
+{% else %}
+
+    {% for x in blog %}
+        <a href="./blog?id={{x.id}}"><h1>{{x.title}}</h1></a>
+        <article>{{x.body}}</article>
+        <a href="./blog?owner_id={{x.owner_id}}"><div>Written by {{x.owner_id}}</div></a>
+    {% endfor %}
+
+{% endif %}
+
 
 {% endblock %}
