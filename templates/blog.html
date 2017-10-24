@@ -6,9 +6,13 @@
 {% else %}
 
     {% for x in blog %}
+        {% for y in user %}
+        {% if y.id == x.owner_id%}
         <a href="./blog?id={{x.id}}"><h1>{{x.title}}</h1></a>
         <article>{{x.body}}</article>
-        <a href="./blog?owner_id={{x.owner_id}}"><div>Written by {{x.owner_id}}</div></a>
+        <a href="./blog?owner_id={{x.owner_id}}"><div>Written by {{y.username}}</div></a>
+        {%endif%}
+        {% endfor %}
     {% endfor %}
 
 {% endif %}
